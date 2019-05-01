@@ -12,4 +12,4 @@ RUN apk upgrade --update \
   && apk add make \
   && npm i -g redoc-cli
 
-CMD redoc-cli bundle -o index.html /app/specs/api.yml && redoc-cli serve /app/specs/api.yml
+CMD redoc-cli bundle -o ./docs/index.html /app/specs/api.yml
