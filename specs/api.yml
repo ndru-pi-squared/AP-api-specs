@@ -58,8 +58,12 @@ paths:
                   type: string
                 example:
                   [
-                    "Bag 1": "Flight ID: f8e479b4-42d3-9a4f-e412b5695",
-                    "Bag 2": "Flight ID: f8e479b4-42d3-9a4f-e412b5696",
+                    "Bag 1": "Bag ID: paf8e479b4-58401958fe",
+                    "Bag ID: paf8e479b4-58401958fe": "Flight ID: f8e479b4-42d3-9a4f-e412b5695",
+                    "Bag 1": "Comments: Black bag with a blue tag on the zipper",
+                    "Bag 2": "Bag ID: paf8e479b4-58401958ff",
+                    "Bag ID: paf8e479b4-58401958ff": "Flight ID: f8e479b4-42d3-9a4f-e412b5696",
+                    "Bag 2": "Comments: Blue bag with a black tag on the zipper",
                   ]
 
   /customers/{customer_id}/flights/{flight_id}/management:
