@@ -12,5 +12,3 @@ services:
     ports:
       - "8080:8080"
     working_dir: /app
-    
-    command: redoc-cli bundle -o index.html /app/specs/api.yml && ping localhost && redoc-cli serve /app/specs/api.yml
