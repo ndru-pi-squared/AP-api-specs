@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: Customer Service Airline API
+  description: |
+    This is an API that returns baggage information associated with a particular customer and ticket
+  version: 0.0.1
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+paths:
+  /customers/{customer_id}/tickets/{ticket_id}/baggage/{baggage_id}:
+    get:
+      summary: Look up baggage info associated with ticket/user account, perhaps to find lost baggage.
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          description: Identifier of the customer that the ticket and baggage belongs to.
+          schema: 
+            type : string
+          example: 6977b2eda-f5cc-23a5-6b9a843de0
+        - name: ticket_id
+          in: path
+          required: true
+          description: Identifier of the ticket that the belongs to the customer.
+          schema: 
+            type : string
+          example: aa244b46-c538-54A4-846b041b6a
+       
+      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              items:
+                customer_id:
+                  type: string
+                  example: 6977b2eda-f5cc-23a5-6b9a843de0
+                ticket_id:
+                  type: string
+                  example: aa244b46-c538-54A4-846b041b6a
+            example:
+              customer_id:
+                value: 6977b2eda-f5cc-23a5-6b9a843de0  
+              ticket_id:
+                value: aa244b46-c538-54A4-846b041b6a                            
+
+      responses:
+        '200':    # status code
+          description: A JSON payload of the customer's baggage associated with a particular flight
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: string
+                example:
+                  [
+                    "Bag 1": "Flight ID: f8e479b4-42d3-9a4f-e412b5695",
+                    "Bag 2": "Flight ID: f8e479b4-42d3-9a4f-e412b5696",
+                  ]
+
+  /customers/{customer_id}/flights/{flight_id}/management:
+    put:
+      summary: Update in-flight management with user in-flight data (considering special accommodations, pets, etc). 
+      parameters:
+        - name: customer_id
+          in: path
+          required: true
+          description: Identifier of the customer
+          schema: 
+            type : string
+          example: 6977b2eda-f5cc-23a5-6b9a843de0
+        - name: flight_id
+          in: path
+          required: true
+          description: Identifier of the flight the customer either is on or will be boarding
+          schema: 
+            type : string
+          example: f8e479b4-42d3-9a4f-e412b5695  
+        - name: accommodation_id
+          in: path
+          required: true
+          description: Identifier code of the specific accommodation needed by the user (from a predetermined list of approved accomodations)  
+          schema: 
+            type : string
+          example: 45522e
+
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: string
+                items:
+                  customer_id:
+                    type: string
+                    example: 6977b2eda-f5cc-23a5-6b9a843de0    
+                  flight_id:
+                    type: string
+                    example: f8e479b4-42d3-9a4f-e412b5695  
+                  accommodation_id:
+                    type: string
+                    example: 45522e
+
+      responses:
+        "200": # status code
+          description: A string showing a concatenation of the successfully updated information
+          content:
+            application/json:
+              schema:
+                type: string
+                items:
+                  update_success:
+                    type: string
+                    example: Updated Accomodation 45522e for Customer 6977b2eda-f5cc-23a5-6b9a843de0 on Flight f8e479b4-42d3-9a4f-e412b5695  
+
+
+
+          
+  
