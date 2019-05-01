@@ -1,0 +1,16 @@
+version: '3.7'
+services:  
+  nodejs:
+    build: 
+        context: .
+        dockerfile: Dockerfile
+    image: final-container 
+    tty: true
+    volumes:
+      - C:\Users\adpit\Documents\GitHub\ndru-pi-squared\AP-api-specs\docs:/app/docs
+      - C:\Users\adpit\Documents\GitHub\ndru-pi-squared\AP-api-specs\node_modules:/app/node_modules
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    
+    command: redoc-cli bundle -o index.html /app/specs/api.yml && ping localhost && redoc-cli serve /app/specs/api.yml
