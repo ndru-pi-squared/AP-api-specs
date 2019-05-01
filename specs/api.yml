@@ -65,6 +65,22 @@ paths:
                     "Bag ID: paf8e479b4-58401958ff": "Flight ID: f8e479b4-42d3-9a4f-e412b5696",
                     "Bag 2": "Comments: Blue bag with a black tag on the zipper",
                   ]
+        "400": 
+          description: Incorrect input
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  "The input could not be evaluated."        
+        "404": 
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  "You have entered an id that does not exist."     
 
   /customers/{customer_id}/flights/{flight_id}/management:
     put:
@@ -120,7 +136,22 @@ paths:
                   update_success:
                     type: string
                     example: Updated Accomodation 45522e for Customer 6977b2eda-f5cc-23a5-6b9a843de0 on Flight f8e479b4-42d3-9a4f-e412b5695  
-
+        "400": 
+          description: Incorrect input
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  "The input could not be evaluated."        
+        "404": 
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  "You have entered an id that does not exist."  
 
 
           
