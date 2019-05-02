@@ -85,29 +85,7 @@ paths:
   /customers/{customer_id}/flights/{flight_id}/management:
     put:
       summary: Update in-flight management with user in-flight data (considering special accommodations, pets, etc). 
-      parameters:
-        - name: customer_id
-          in: path
-          required: true
-          description: Identifier of the customer
-          schema: 
-            type : string
-          example: 6977b2eda-f5cc-23a5-6b9a843de0
-        - name: flight_id
-          in: path
-          required: true
-          description: Identifier of the flight the customer either is on or will be boarding
-          schema: 
-            type : string
-          example: f8e479b4-42d3-9a4f-e412b5695  
-        - name: accommodation_id
-          in: path
-          required: true
-          description: Identifier code of the specific accommodation needed by the user (from a predetermined list of approved accomodations)  
-          schema: 
-            type : string
-          example: 45522e
-
+      parameters: []
       requestBody:
           required: true
           content:
